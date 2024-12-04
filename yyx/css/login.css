@@ -1,0 +1,265 @@
+/* 基本重置样式 */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: none; /* 确保页面背景不干扰登录框 */
+    cursor: none; /* 隐藏鼠标光标 */
+}
+
+/* 设置整个网页的背景图 */
+body {
+    /* 引用背景图片，确保更换为你的图片路径 */
+    background-image: url('../img/body.jpg');
+    /* 背景图片覆盖整个网页 */
+    background-size: cover;
+    /* 背景图片不重复 */
+    background-repeat: no-repeat;
+    /* 背景图片固定位置，滚动时不移动 */
+    background-attachment: fixed;
+    /* 背景图片在容器中居中显示 */
+    background-position: center center;
+    /* 确保背景图覆盖整个网页，即使网页内容较少 */
+    min-height: 100%;
+    /* 确保body至少和视口一样大 */
+    min-width: 100vw;
+    /* 重置默认的margin */
+    margin: 0;
+}
+
+
+
+
+/* 登录容器居中显示，并设置背景图片仅填充登录框 */
+.login-container {
+    position: relative;  /* 必须设置为relative以定位伪元素 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    padding: 60px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    color: white; /* 设置文本颜色为白色，确保可读性 */
+    border-radius: 20px; /* 添加登录框圆角效果 */
+    overflow: hidden; /* 确保伪元素不溢出 */
+}
+
+.login-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/login.jpg'); /* 调整为正确的图片路径 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1; /* 调整透明度为所需的值 */
+    z-index: -1; /* 确保背景在内容之下 */
+}
+
+/* 表单布局设置 */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 9px; /* 设置标签与输入框间的间距 */
+}
+
+/* 输入框通用样式 */
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 53px; /* 设置输入框之间的通用间距 */
+    border: 1px solid transparent;  /* 设置边框为透明 */
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.2); /* 设置半透明背景以增加可读性 */
+    /* cursor: pointer; /* 设置光标为小手形状 */
+    color: white; /* 设置输入内容的颜色为白色 */
+    font-weight: bold; /* 加粗字体 */
+    transition: background-color 0.3s, color 0.3s; /* 平滑的颜色和背景过渡效果 */
+    font-family: 'Noto Serif SC', serif; /* 使用Noto Serif CJK SC作为主字体 */
+}
+
+/* 输入框placeholder样式，初始状态不可见 */
+input::placeholder {
+    color: transparent; /* 使placeholder文字在非悬停状态下不可见 */
+    transition: color 0.3s ease-in-out; /* 平滑的颜色过渡效果 */
+}
+
+/* 输入框在鼠标悬停时的样式 */
+input[type="text"]:hover::placeholder,
+input[type="password"]:hover::placeholder {
+    color: #fff; /* 鼠标悬停时将placeholder文字颜色变为白色 */
+    text-shadow: 0 0 8px #fff, 0 0 16px #E0E0E0; /* 添加发光效果 */
+}
+
+/* 输入框在鼠标悬停时的背景和文字颜色变化 */
+input[type="text"]:hover,
+input[type="password"]:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* 深化背景色以突出文字 */
+    color: #fff; /* 鼠标悬停时文字颜色为白色 */
+}
+
+/* 单独设置密码输入框到登录按钮的间距 */
+.input-password {
+    margin-bottom: 30px; /* 增加密码输入框到登录按钮的间距 */
+}
+
+/* 登录按钮样式 */
+.login-button {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2); /* 按钮背景半透明 */
+    border: none;
+    border-radius: 50px; /* 设置按钮边缘为圆形 */
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.2); /* 文字颜色透明或与背景相同使其不可见 */
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* 设置美观的字体 */
+    font-weight: bold; /* 加粗字体 */
+    transition: color 0.3s ease-in-out; /* 平滑的颜色过渡效果 */
+    font-family: 'Noto Serif SC', serif; /* 使用Noto Serif CJK SC作为主字体 */
+}
+
+/* 登录按钮在鼠标悬停时的样式 */
+.login-button:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* 鼠标悬停时按钮变暗 */
+    color: #fff; /* 鼠标悬停时将文字颜色变为白色 */
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #E0E0E0, 0 0 40px #E0E0E0, 0 0 50px #E0E0E0, 0 0 60px #E0E0E0, 0 0 70px #E0E0E0; /* 添加多层发光效果，增强视觉冲击 */
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* 定制输入框 placeholder 的样式 */
+input::placeholder {
+    color:rgba(0, 0, 0, 0);  /* 选择一种较浅的灰色 */
+}
+
+/* 光点拖尾的样式 */
+.cursor-trail {
+    position: fixed;
+    pointer-events: none; /* 确保不会干扰页面上的其他元素 */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(198, 195, 197, 0.8);
+    mix-blend-mode: screen; /* 使用屏幕混合模式使光点更加明亮 */
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.2s; /* 平滑过渡效果 */
+    z-index: 1000;
+}
+
+
+
+
+
+
+
+/* 基础样式保持不变 */
+
+/* 模态窗口背景 */
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed;
+    z-index: 1; /* 位于顶层 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 全屏宽 */
+    height: 100%; /* 调整高度为70% */
+    overflow: auto; /* 如果需要滚动条 */
+    background-color: rgba(0,0,0,0.4); /* 黑色背景，略透明 */
+}
+
+/* 模态内容 */
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.2); /* 半透明背景 */
+    margin: 10% auto; /* 从顶部和水平居中 */
+    padding: 20px;
+    border: none; /* 移除边框 */
+    width: 40%; /* 可以调整宽度 */
+    max-width: 400px; /* 最大宽度 */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 40px; /* 设置边缘为圆形 */
+    text-align: center; /* 文本居中 */
+    /*font-family: 'Helvetica Neue', Arial, sans-serif; /* 设置美观的字体 */
+    font-weight: bold; /* 加粗字体 */
+    font-size: 18px; /* 增大字体大小 */
+}
+
+/* 关闭按钮样式 */
+.close, #closeBtn {
+    display: block; /* 块级元素，以便可以居中 */
+    font-size: 20px; /* 增大字体大小 */
+    color: transparent; /* 初始透明 */
+    text-align: center; /* 文本居中 */
+    margin: 20px auto; /* 上下保留空间，左右自动 */
+    padding: 15px 30px; /* 增大按钮的填充 */
+    background-color: rgba(0,0,0,0); /* 透明背景 */
+    border: none; /* 去除边框 */
+    border-radius: 10px; /* 圆角边框 */
+    cursor: pointer; /* 添加鼠标手形提示 */
+    transition: color 0.3s, text-shadow 0.3s; /* 平滑过渡效果 */
+    font-family: 'Noto Serif SC', serif; /* 使用Noto Serif CJK SC作为主字体 */
+}
+
+#closeBtn:hover {
+    color: #ed060ec3; /* 鼠标悬停时的文字颜色 */
+    text-shadow: 0 0 10px white, 0 0 20px white; /* 发光效果 */
+}
+
+
+/* 关闭按钮样式 */
+.close, #closeBtn2 {
+    display: block; /* 块级元素，以便可以居中 */
+    font-size: 20px; /* 增大字体大小 */
+    color: transparent; /* 初始透明 */
+    text-align: center; /* 文本居中 */
+    margin: 20px auto; /* 上下保留空间，左右自动 */
+    padding: 15px 30px; /* 增大按钮的填充 */
+    background-color: rgba(0,0,0,0); /* 透明背景 */
+    border: none; /* 去除边框 */
+    border-radius: 10px; /* 圆角边框 */
+    cursor: pointer; /* 添加鼠标手形提示 */
+    transition: color 0.3s, text-shadow 0.3s; /* 平滑过渡效果 */
+    font-family: 'Noto Serif SC', serif; /* 使用Noto Serif CJK SC作为主字体 */
+}
+
+#closeBtn2:hover {
+    color: #ed060ec3; /* 鼠标悬停时的文字颜色 */
+    text-shadow: 0 0 10px white, 0 0 20px white; /* 发光效果 */
+}
+
+body, .modal-content {
+    font-family: 'Noto Serif SC', serif; /* 使用Noto Serif CJK SC作为主字体 */
+}
+
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 70%; /* 在小屏幕上使用较宽的宽度比例 */
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 90%; /* 在非常小的屏幕上使用最宽的宽度比例 */
+    }
+}
+
+
+
+
+
